@@ -13,13 +13,11 @@ echo "Running script: $0"
 if [ -n "$1" ] && [ "$1" -eq "$1" ] 2>/dev/null; then
 else
   echo "not a number, $1"
-  exit 1
 fi
 
 if [ -n "$2" ] && [ "$2" -eq "$2" ] 2>/dev/null; then
 else
   echo "not a number, $2"
-  exit 1
 fi
 
 

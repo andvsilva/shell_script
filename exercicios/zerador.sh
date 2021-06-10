@@ -1,6 +1,4 @@
 #!/bin/bash
 
-for ((i=$1;i>=0;i--))
-do
-	echo "$i"
-done
+# seq reverse using a negative increment
+echo $(seq $1 -1 0)
