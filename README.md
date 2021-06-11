@@ -55,6 +55,18 @@ $ ./shells.sh
 /usr/bin/zsh
 ```
 
+### [Exercício 7 - parametros.sh](exercicios/parametros.sh)
+```Bash
+$ chmod +x parametros.sh
+$ source parametros.sh a b c d e f
+Username - 1: a
+Username - 2: b
+Username - 3: c
+Username - 4: d
+Username - 5: e
+Username - 6: f
+```
+
 ### Resources:
 
 - [100 Essential Linux Commands for Every User](https://linuxhint.com/100_essential_linux_commands/)
