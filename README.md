@@ -54,3 +54,11 @@ $ ./shells.sh
 /sbin/nologin
 /usr/bin/zsh
 ```
+
+### Resources:
+
+- [100 Essential Linux Commands for Every User](https://linuxhint.com/100_essential_linux_commands/)
+
+- [101 Bash Commands and Tips for Beginners to Experts](https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je)
+
+- [90 Linux Commands frequently used by Linux Sysadmins](https://haydenjames.io/90-linux-commands-frequently-used-by-linux-sysadmins/)
