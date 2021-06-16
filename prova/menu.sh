@@ -25,13 +25,26 @@ read Option
 
 # switch
 
+# variables:
+    # counter 
+    icount=1
+
+    # Maior valores
+    aMaior=0 
+    bMaior=0
+
 case $Option in
 
+# First Option
 1)  echo -n "Digitar dois valores inteiros positivos distintos: A B\n"
     echo "Digite A:"
     read A
     echo "Digite B:"
     read B
+
+    aMaior=$A 
+    bMaior=$B
+
     while [[ $A -gt 0 && $B -gt 0 ]]
     do
         echo -n "Digitar dois valores inteiros positivos distintos: A B\n"
@@ -39,7 +52,19 @@ case $Option in
         read A
         echo "Digite B:"
         read B
+
+        # check
+        if (( $A > $aMaior && $B > $bMaior ))
+        then
+            aMaior=$A
+            bMaior=$B
+        fi
+
+        icount=$((icount+1))
     done
+    echo "Número de valores digitados entre as variáveis A e B: $icount"
+    echo "O maior valor digitado para A: $aMaior e B: $bMaior"
+
     ;;
 *) echo "Opção inválida\n "
 echo $Menu
