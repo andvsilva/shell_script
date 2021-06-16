@@ -1,0 +1,7 @@
+5
+car
+computer
+list_names
+list_names.txt
+menu.sh
+var

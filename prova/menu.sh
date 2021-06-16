@@ -69,8 +69,43 @@ case $Option in
 
 # Second Option
 2) echo "Digitar o caminho absoluto para o diretório existente:"
+
+   iElementsDir=0
    read pathDirectory
-   ls $pathDirectory | wc -l
+
+   #ls $pathDirectory | wc -l
+
+   #ls > list_names.txt
+
+   while read line; 
+   do
+        inString="$line" # get each file name in the folder: directory
+        nCaracters=${#inString}
+        echo "............$nCaracters"
+
+
+        # get last element string
+        word="${words: -1}"
+        #echo $word
+
+        if [ $nCaracters -gt 5 ]; then
+            if [[ "$word" == 'r' ]]; then
+                echo "$words"
+                iElementsDir=$((iElementsDir+1))
+            fi
+        fi
+
+   done < list_names.txt
+   ;;
+
+3) echo ""
+
+   ;;
+
+4) echo " Digite nome de usuario cadastro: "
+   read NAME 
+   Quantidade=$(cat /etc/group | grep $NAME |wc -l)
+   echo -ne " Número usuarios $NAME: $Quantidade" read
 
    ;;
 
