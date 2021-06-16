@@ -66,6 +66,14 @@ case $Option in
     echo "O maior valor digitado para A: $aMaior e B: $bMaior"
 
     ;;
+
+# Second Option
+2) echo "Digitar o caminho absoluto para o diretório existente:"
+   read pathDirectory
+   ls $pathDirectory | wc -l
+
+   ;;
+
 *) echo "Opção inválida\n "
 echo $Menu
 ;;
