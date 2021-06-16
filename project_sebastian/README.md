@@ -9,6 +9,58 @@ os mais recentes e copie os inexistentes.
 Se o parâmetro z for adicionado na linha de comando (executando ./Picture Backup.sh z), o diretório deve
 backup compactado com gzip (nesse caso, não há problema de sobrescrever um backup anterior)
 
+
+```bash
+/repo/shell_script/project_sebastian on  master!
+$ source Photos.sh 
+Disk /dev/sda: 931,53 GiB, 1000204886016 bytes, 1953525168 sectors
+Disk /dev/sdb: 3,76 GiB, 4022337024 bytes, 7856127 sectors
+Usage: for example sdb, type >>> b:
+Type the disk:
+b
+Create a folder backup at /media/ ...
+Create a mount point...
+mkfs.fat 4.1 (2017-01-24)
+attribute "partition" not found
+Mount the USB Drive...
+Copy folder into pendrive
+All done
+
+
+#############
+
+/media/backup/pictures ⌚ 14:23:45
+$ tree                  
+.
+├── dogs
+│   ├── download (5).jpeg
+│   ├── download.jpeg
+│   ├── images (1).jpeg
+│   ├── images (2).jpeg
+│   ├── images (3).jpeg
+│   ├── images (4).jpeg
+│   ├── images (5).jpeg
+│   ├── images (6).jpeg
+│   └── images.jpeg
+├── download (1).jpeg
+├── download (2).jpeg
+├── download (3).jpeg
+├── download (4).jpeg
+├── download.jpeg
+├── images (1).jpeg
+├── images (2).jpeg
+├── images (3).jpeg
+├── images (4).jpeg
+├── images (5).jpeg
+├── images (6).jpeg
+├── images (7).jpeg
+├── images (8).jpeg
+└── images.jpeg
+
+1 directory, 23 files
+
+```
+
 # Tarefa / Projeto final para o S.O.Linux opcional
 
 ## 1) 
@@ -40,3 +92,43 @@ instituto e eventualmente publicado. A cópia impressa não é solicitada.
 compartilhar as dificuldades do processo. Os produtos (pontos 1 e 2) a serem apresentados devem ser
 Individual. Em particular, no caso do relatório, deve-se notar claramente que não é um
 escrita comum, embora obviamente o processo que você descreve possa ser o mesmo.
+
+
+```bash
+
+### REPO
+
+$ tree         
+.
+├── Photos.sh
+├── pictures
+│   ├── dogs
+│   │   ├── download (5).jpeg
+│   │   ├── download.jpeg
+│   │   ├── images (1).jpeg
+│   │   ├── images (2).jpeg
+│   │   ├── images (3).jpeg
+│   │   ├── images (4).jpeg
+│   │   ├── images (5).jpeg
+│   │   ├── images (6).jpeg
+│   │   └── images.jpeg
+│   ├── download (1).jpeg
+│   ├── download (2).jpeg
+│   ├── download (3).jpeg
+│   ├── download (4).jpeg
+│   ├── download.jpeg
+│   ├── images (1).jpeg
+│   ├── images (2).jpeg
+│   ├── images (3).jpeg
+│   ├── images (4).jpeg
+│   ├── images (5).jpeg
+│   ├── images (6).jpeg
+│   ├── images (7).jpeg
+│   ├── images (8).jpeg
+│   └── images.jpeg
+├── Proyecto+final.pdf
+├── README.md
+└── Tarea_11.pdf
+
+2 directories, 27 files
+```
