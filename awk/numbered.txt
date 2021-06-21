@@ -1,0 +1,6 @@
+1  Xmonad
+2  Qtile
+3  Awesome
+4  Openbox
+5  Spectrwn
+6  Dwm
