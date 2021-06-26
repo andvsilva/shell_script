@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="server---apache">Server - Apache</h2>
+<pre class="hljs"><code><div><span class="hljs-string">'apache2'</span> - Apache Hypertext Transfer Protocol Server
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-string">'apache2'</span> is the Apache HyperText Transfer Protocol  (HTTP)  server  pro‐
+       gram.  It  is  designed  to be run as a standalone daemon process. When
+       used like this it will create a pool of child processes or  threads  to
+       handle requests.
+
+       In  general,  apache2 should not be invoked directly, but rather should
+       be invoked via /etc/init.d/apache2 or apache2ctl.  The  default  Debian
+       configuration  requires  environment  variables  that  are  defined  <span class="hljs-keyword">in</span>
+       /etc/apache2/envvars and  are  not  available  <span class="hljs-keyword">if</span>  apache2  is  started
+       directly.   However, apache2ctl can be used to pass arbitrary arguments
+       to apache2.
+
+</div></code></pre>
+<h2 id="installation">Installation</h2>
+<pre class="hljs"><code><div>sudo apt-get update
+sudo apt-get install apache2
+sudo apt-get install mysql-server
+
+</div></code></pre>
+<pre class="hljs"><code><div>sudo apt-get install phpmyadmin
+</div></code></pre>
+<p>Select <code>apache2</code> as the web server by pressing <code>Space</code> and then <code>Tab</code> key and press <code>enter</code> key. (<code>&lt;Ok&gt;</code>)</p>
+<p><img src="pictures/apache2.png" alt=""></p>
+<p>Press <code>Yes</code> to configure database for phpmyadmin.</p>
+<p><img src="pictures/database_phpmyadmin.png" alt=""></p>
+<p>Provide password which we set as <code>root</code> earlier.</p>
+<p><img src="pictures/password_root_db.png" alt=""></p>
+<p>Confirm it, and then you are done.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Test phpMyAdmin</span>
+Now open <span class="hljs-string">'http://localhost/phpmyadmin/'</span> <span class="hljs-keyword">in</span> your browser to access phpmyadmin and you can login with username and password both as root.
+
+The requested URL /phpmyadmin/ was not found on this server.
+
+Apache/2.4.25 (Debian) Server at localhost Port 80
+
+<span class="hljs-comment">########################################################</span>
+<span class="hljs-string">'WARNING'</span>: Does not work, BUT I know how to this!
+<span class="hljs-comment">#############################################################</span>
+</div></code></pre>
+<h2 id="how-to-fix-this">How to fix this:</h2>
+<pre class="hljs"><code><div>The requested URL /phpmyadmin/ was not found on this server.
+
+<span class="hljs-comment">## Please, see the steps below to fix this.</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">##################################</span>
+<span class="hljs-comment">## Not Found</span>
+<span class="hljs-comment">##################################</span>
+The requested URL /phpmyadmin/ was not found on this server.
+
+Apache/2.4.25 (Debian) Server at localhost Port 80
+
+<span class="hljs-string">'How to fix this:'</span>
+
+<span class="hljs-comment"># First open the file apache2.conf</span>
+sudo -H gedit /etc/apache2/apache2.conf
+
+<span class="hljs-comment"># Second, add the line below in the end of the file 'apache2.conf'</span>
+Include /etc/phpmyadmin/apache.conf
+
+<span class="hljs-comment"># save and exit, done! go ahead.</span>
+
+<span class="hljs-comment"># Third, restart apache, typing in the terminal</span>
+/etc/init.d/apache2 restart
+[ ok ] Restarting apache2 (via systemctl): apache2.service.
+</div></code></pre>
+<h3 id="localhost---server">Localhost - Server</h3>
+<pre class="hljs"><code><div>http://localhost/phpmyadmin/
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment"># Now open again, 'http://localhost/phpmyadmin/' in your browser</span>
+
+<span class="hljs-comment"># or type in terminal:</span>
+google-chrome http://localhost/phpmyadmin/
+
+Fontconfig warning: <span class="hljs-string">"/etc/fonts/fonts.conf"</span>, line 100: unknown element <span class="hljs-string">"blank"</span>
+[6231:6231:0626/123242.111192:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads <span class="hljs-keyword">in</span> process gpu-process.
+[6193:6213:0626/123242.246951:ERROR:browser_process_sub_thread.cc(209)] Waited 3 ms <span class="hljs-keyword">for</span> network service
+Opening <span class="hljs-keyword">in</span> existing browser session.
+</div></code></pre>
+<p>Open the browser session, see below the login window in figure:</p>
+<p><img src="pictures/server_login.png" alt=""></p>
+<p>Enter with the <code>Username</code> and <code>password</code></p>
+<pre class="hljs"><code><div>Username: phpmyadmin
+Password: **********
+</div></code></pre>
+<p><img src="pictures/server_localhost_logged.png" alt=""></p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://httpd.apache.org/">Welcome! - The Apache HTTP Server Project</a></li>
+<li><a href="https://blog.ashfame.com/2011/03/quickly-setup-localhost-environment-ubuntu/">Quickly setup a localhost environment in Ubuntu</a></li>
+</ul>
+
+</body>
+</html>
