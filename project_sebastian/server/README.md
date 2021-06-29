@@ -309,31 +309,33 @@ $ sudo /etc/init.d/mysql start
 ### [How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-18-04)
 
 ```bash
-TLS, or transport layer security, and its predecessor SSL, 
-which stands for secure sockets layer, are web protocols used 
-to wrap normal traffic in a protected, encrypted wrapper.
+|Read the step-by-step: How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 18.04
+```
 
-## Step 1 – Creating the SSL Certificate
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+## Server-Ubuntu.
 
-## You will be asked a series of questions. Before we go 
-## over that, let’s take a look at what is happening in the 
-## command we are issuing:
-## The most important line is the one that requests the Common Name (e.g. server FQDN or ## YOUR name). You need to enter the domain name associated with your server or, more ## likely, your server’s public IP address.
+```bash
+1 - Download virtual box from Oracle Virtualbox
+2 - Install virtual box on your machine
+3 - Install virtual box on your machine.
 
-The entirety of the prompts will look something like this:
+Then setup ubuntu server on virtual box.
 
-Output
-Country Name (2 letter code) [AU]:US
-State or Province Name (full name) [Some-State]:New York
-Locality Name (eg, city) []:New York City
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:Bouncy Castles, Inc.
-Organizational Unit Name (eg, section) []:Ministry of Water Slides
-Common Name (e.g. server FQDN or YOUR name) []:server_IP_address
-Email Address []:admin@your_domain.com
+After a successful setup, login to ubuntu server in virtual machine.
 
+## Setup SSH on ubuntu server
 
-# Step 2 – Configuring Apache to Use SSL
+#Then open terminal and install following packages:
+
+sudo apt update
+sudo apt install openssh-server
+sudo apt install ssh
+
+sudo systemctl status ssh
+
+sudo ufw disable
+
+sudo ufw allow from IP_address
 ```
 
 ### Resources
@@ -346,3 +348,5 @@ Email Address []:admin@your_domain.com
 - [5 Tips to Boost the Performance of Your Apache Web Server](https://www.tecmint.com/check-apache-modules-enabled/)
 - [How to Password Protect Web Directories in Apache Using .htaccess File](https://www.tecmint.com/password-protect-apache-web-directories-using-htaccess/)
 - [How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-18-04)
+- [Ubuntu Server setup on Virtual box and connect with SSH](https://dev.to/shafikshaon/ubuntu-server-setup-on-virtual-box-and-connect-with-ssh-56k0)
+- [How To Set Up a Firewall with UFW on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04)
