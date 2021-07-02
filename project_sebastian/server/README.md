@@ -1,3 +1,84 @@
+## [Install Ubuntu-Server on Virtual](https://linuxhint.com/install_ubuntu_virtualbox_2004/)
+
+```bash
+# Install virtual box:
+# https://linuxhint.com/install_ubuntu_virtualbox_2004/
+
+1 - Download virtual box from Oracle Virtualbox
+2 - Install virtual box on your machine
+3 - Download ubuntu-server
+4 - Install ubuntu-server on virtual box.
+
+
+# install virtual box on your machine
+sudo apt install virtualbox
+sudo apt install wget
+
+# download ubuntu-server
+wget -c http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso 
+
+# Install ubunut server on vitual box
+# https://www.techrepublic.com/article/how-to-install-ubuntu-server-20-04-with-the-new-live-installer/
+```
+
+### Setting Ubuntu-Server
+
+```bash
+# Before to starting the ubuntu server, let's to configure the network on the virtualbox
+# for the ubuntu-server.
+
+# Adapter
+
+# First, starting Ubuntu-Server on the virtual machine
+
+# terminal login and password
+
+# type
+$ ifconfig
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+
+$ cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+
+auto enp0s8
+iface enp0s8 inet static
+	address **********
+	netmask **********
+
+$ cat /etc/netplan/00-installer-config.yaml 
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: yes
+    enp0s8:
+      dhcp4: no
+      addresses: [**********/24]
+  version: 2
+
+sudo apt install ufw # firewall
+
+sudo ufw enable
+
+sudo ufw allow tcp/22
+sudo ufw allow IP_ADDRESS
+
+# From the host machine to access the VM
+ssh username@ip_address_server
+
+#https://linuxconfig.org/install-mysql-on-ubuntu-20-04-lts-linux
+
+#https://linuxize.com/post/how-to-install-mariadb-on-ubuntu-20-04/
+
+#https://linuxhint.com/install_mysql_ubuntu_2004/
+
+#https://www.cyberciti.biz/faq/install-mysql-server-8-on-ubuntu-20-04-lts-linux/
+
+```
+
 ## Server - Apache
 
 ```bash
@@ -246,14 +327,9 @@ Apache/2.4.25 (Debian) Server at localhost Port 80
 
 ### ps Utility
 
-```ps``` is a utility which shows information concerning a selection of the active processes runing on a Linux system, you can use it with ```grep command``` to check Apache service uptime as follows.
+**ps** is a utility which shows information concerning a selection of the active processes runing on a Linux system, you can use it with **grep command** to check Apache service uptime as follows.
 
-Here, the flags:
-
-- ```-e``` - Enables selection of every processes on the system.
-- ```-o``` - is used to specify output (comm,-- command, etime-- process execution time and user -- process owner).
-
-```Bash
+```bash
 ps -eo comm,etime,user | grep apache2
 apache2            01:02:20 root
 apache2               23:24 www-data
@@ -265,7 +341,27 @@ apache2               12:53 www-data
 apache2               12:52 www-data
 apache2               12:52 www-data
 
-ps -eo comm,etime,user | grep root | grep apache2                                         24ms 
+ps -eo comm,etime,user | grep root | grep apache2 
+apache2            01:03:37 root
+```
+Here, the flags:
+
+- ```-e``` - Enables selection of every processes on the system.
+- ```-o``` - is used to specify output (comm,-- command, etime-- process execution time and user -- process owner).
+
+```bash
+ps -eo comm,etime,user | grep apache2
+apache2            01:02:20 root
+apache2               23:24 www-data
+apache2               22:59 www-data
+apache2               14:11 www-data
+apache2               14:10 www-data
+apache2               14:10 www-data
+apache2               12:53 www-data
+apache2               12:52 www-data
+apache2               12:52 www-data
+
+ps -eo comm,etime,user | grep root | grep apache2 
 apache2            01:03:37 root
 ```
 
@@ -310,32 +406,6 @@ $ sudo /etc/init.d/mysql start
 
 ```bash
 |Read the step-by-step: How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 18.04
-```
-
-## Server-Ubuntu.
-
-```bash
-1 - Download virtual box from Oracle Virtualbox
-2 - Install virtual box on your machine
-3 - Install virtual box on your machine.
-
-Then setup ubuntu server on virtual box.
-
-After a successful setup, login to ubuntu server in virtual machine.
-
-## Setup SSH on ubuntu server
-
-#Then open terminal and install following packages:
-
-sudo apt update
-sudo apt install openssh-server
-sudo apt install ssh
-
-sudo systemctl status ssh
-
-sudo ufw disable
-
-sudo ufw allow from IP_address
 ```
 
 ### Resources
