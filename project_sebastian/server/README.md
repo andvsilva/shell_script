@@ -79,6 +79,134 @@ ssh username@ip_address_server
 
 ```
 
+## MySQL Server
+
+```bash
+sudo apt install mysql-server
+sudo apt install mysql-client
+
+sudo mysql_secure_installation
+
+#sudo systemctl restart mysql
+#sudo systemctl enable mysql
+sudo systemctl status mysql
+
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: ena>
+     Active: 'active (running)' since Fri 2021-07-02 13:03:49 UTC; 7min ago
+   Main PID: 2172 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 1071)
+     Memory: 326.3M
+     CGroup: /system.slice/mysql.service
+             └─2172 /usr/sbin/mysqld
+
+Jul 02 13:03:47 ubuserver systemd[1]: Starting MySQL Community Server...
+Jul 02 13:03:49 ubuserver systemd[1]: Started MySQL Community Server.
+
+# By default, MySQL listens for connections on port 3306. 
+# You can confirm that #your MySQL service is listening 
+# for incoming connections on all interfaces 0.0.0.0 
+# with this command:
+
+ss -ltn
+State    Recv-Q   Send-Q     Local Address:Port       Peer Address:Port   Process   
+LISTEN   0        70             127.0.0.1:33060           0.0.0.0:*                
+LISTEN   0        151            127.0.0.1:3306            0.0.0.0:*                
+LISTEN   0        4096       127.0.0.53%lo:53              0.0.0.0:*                
+LISTEN   0        128              0.0.0.0:22              0.0.0.0:*                
+LISTEN   0        128                 [::]:22                 [::]:*
+
+
+# Finally, the only thing left to do is make sure that your server's 
+# firewall isn't blocking incoming connections on port 3306 
+# (default MySQL listening port). You can issue the following 
+# ufw command to add an exception in Ubuntu's default firewall:
+
+sudo ufw allow from any to any port 3306 proto tcp
+
+sudo ufw status                                   
+Status: active
+
+To                         Action      From
+--                         ------      ----            
+3306/tcp (v6)              ALLOW       Anywhere (v6)
+```
+## How to setup a MySQL database
+
+```bash
+# Step 1: to open MySQL
+sudo mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.25-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+# Step 2: Create a new database
+mysql> CREATE DATABASE dataset;
+
+# Step 3: to create a new user account
+mysql> SHOW VARIABLES LIKE 'validate_password%';
++--------------------------------------+--------+
+| Variable_name                        | Value  |
++--------------------------------------+--------+
+| validate_password.check_user_name    | ON     |
+| validate_password.dictionary_file    |        |
+| validate_password.length             | 6      |
+| validate_password.mixed_case_count   | 1      |
+| validate_password.number_count       | 0      |
+| validate_password.policy             | STRONG |
+| validate_password.special_char_count | 1      |
++--------------------------------------+--------+
+7 rows in set (0.00 sec)
+
+CREATE USER 'my_user'@'%' IDENTIFIED BY 'my_password';
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+
+mysql> SET GLOBAL validate_password.policy=LOW;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW VARIABLES LIKE 'validate_password%';
++--------------------------------------+-------+
+| Variable_name                        | Value |
++--------------------------------------+-------+
+| validate_password.check_user_name    | ON    |
+| validate_password.dictionary_file    |       |
+| validate_password.length             | 6     |
+| validate_password.mixed_case_count   | 1     |
+| validate_password.number_count       | 0     |
+| validate_password.policy             | LOW   |
+| validate_password.special_char_count | 1     |
++--------------------------------------+-------+
+7 rows in set (0.00 sec)
+
+# Step 4: to grant this new user some permissions on our database.
+GRANT ALL PRIVILEGES ON dataset.* to my_user@'%';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> EXIT;
+Bye
+```
+
+## to Install MariaDB on Ubuntu Server
+
+```bash
+sudo apt update
+sudo apt install mariadb-server
+
+sudo systemctl status mariadb
+```
+
 ## Server - Apache
 
 ```bash
@@ -97,7 +225,6 @@ ssh username@ip_address_server
        /etc/apache2/envvars and  are  not  available  if  apache2  is  started
        directly.   However, apache2ctl can be used to pass arbitrary arguments
        to apache2.
-
 ```
 
 ## Installation
@@ -106,7 +233,6 @@ ssh username@ip_address_server
 sudo apt-get update
 sudo apt-get install apache2
 sudo apt-get install mysql-server
-
 ```
 
 ```bash
@@ -420,3 +546,4 @@ $ sudo /etc/init.d/mysql start
 - [How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-18-04)
 - [Ubuntu Server setup on Virtual box and connect with SSH](https://dev.to/shafikshaon/ubuntu-server-setup-on-virtual-box-and-connect-with-ssh-56k0)
 - [How To Set Up a Firewall with UFW on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04)
+- [VirtualBox Network Settings: Complete Guide](https://www.nakivo.com/blog/virtualbox-network-setting-guide/)
