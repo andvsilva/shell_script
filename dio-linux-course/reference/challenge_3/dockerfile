@@ -1,0 +1,4 @@
+FROM ubuntu:20.04
+COPY ./script/iac.sh /script/iac.sh
+WORKDIR /script
+RUN chmod +x ./iac.sh && ./iac.sh
